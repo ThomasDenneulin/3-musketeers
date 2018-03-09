@@ -7,6 +7,10 @@ const currencies = require('../lib/currencies.json');
 
 const API = 'https://api.fixer.io/latest';
 
+/**
+ * Convert a currency to an other in real time
+ * @param {*} configuration input variable : amount,to,from,response,loading
+ */
 const convert = configuration => {
   const {amount, to, from, response, loading} = configuration;
 
@@ -14,19 +18,19 @@ const convert = configuration => {
   money.rates = response.body.rates;
 
   to.forEach(item => {
-    if (currencies[item]) {
-      loading.succeed(
+    if (currencies[item]) { //If the currencie is a real currencie
+      loading.succeed( //Graphic element
         `${chalk.green(
-          money.convert(amount, {from, 'to': item}).toFixed(2)
+          money.convert(amount, {from, 'to': item}).toFixed(2) //Conversion function from money module
         )} ${`(${item})`} ${currencies[item]}`
       );
     } else {
-      loading.warn(`${chalk.yellow(` The ${item} currency not found `)}`);
+      loading.warn(`${chalk.yellow(` The ${item} currency not found `)}`); //Graphic loader
     }
   });
 
   console.log();
-  console.log(
+  console.log( //Exit
     chalk.underline.gray(
       ` Conversion of ${chalk.bold(from)} ${chalk.bold(amount)}`
     )

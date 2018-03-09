@@ -25,7 +25,7 @@ const saveCurrencies = argv => {
 };
 
 /**
- * Return the version of the module
+ * Return version of the modul
  */
 const version = () => {
   console.log(pkg.version);
