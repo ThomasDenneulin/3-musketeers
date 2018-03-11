@@ -63,17 +63,17 @@ test('should throw when untest is undefined', () => {
   //convert(new Big(2), 'BTC', 'x', 'Number');
   //convert(NaN, 'x', 'BTC', 'Number');
   //convert(NaN, 'BTC', 'x', 'Number');
-  expect(() => { convert(new Big(2), 'x', 'BTC', 'Number') }).toThrow(/is not a bitcoin unit/);
+  expect(() => { convert(new Big(2), 'undefined', 'BTC', 'Number') }).toThrow(/is not a bitcoin unit/);
 });
 
 test('should throw when representaion is undefined', () => {
   //convert(2, 'BTC', 'mBTC', 'x');
   //convert(NaN, 'BTC', 'mBTC', 'x');
-  expect(() => { convert(2, 'BTC', 'mBTC', 'x') }).toThrow(/is not a valid representation/);
+  expect(() => { convert(2, 'BTC', 'mBTC', 'undefined') }).toThrow(/is not a valid representation/);
 });
 
 test('should allow untest aliases', () => {
   //convert(4.6, 'Satoshi', 'sat');
   //convert(4.6, 'μBTC', 'btest');
-  expect(() => { convert(4.6, 'μBTC', 'testaliases') }).toThrow(/is not a bitcoin unit/);
+  expect(() => { convert(4.6, 'μBTC', 'undefined') }).toThrow(/is not a bitcoin unit/);
 });
